@@ -1,0 +1,18 @@
+#!/bin/sh -eu
+#
+# bin/compile BUILD_DIR CACHE_DIR ENV_DIR
+
+BUILD_DIR=${1:-}
+
+PROXIMO_FILENAME=proximo-stacklet.tgz
+PROXIMO_URL="http://downloads.proximo.io/$PROXIMO_FILENAME"
+
+echo "    -> Downloading proximo... (${PROXIMO_URL})"
+
+curl -sL --retry 3 --max-time 60 "$PROXIMO_URL" --output "$PROXIMO_FILENAME"
+
+echo '    -> Installing proximo...'
+
+tar xf "$PROXIMO_FILENAME" -C "$BUILD_DIR"
+
+echo '    DONE'
