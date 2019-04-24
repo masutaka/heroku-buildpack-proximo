@@ -14,5 +14,6 @@ curl -sL --retry 3 --max-time 60 "$PROXIMO_URL" --output "$PROXIMO_FILENAME"
 echo '    -> Installing proximo...'
 
 tar xf "$PROXIMO_FILENAME" -C "$BUILD_DIR"
+rm -f "${BUILD_DIR}/bin/._proximo" # garbage? It seems AppleDouble encoded Macintosh file.
 
 echo '    DONE'
